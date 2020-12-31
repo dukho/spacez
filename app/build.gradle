@@ -60,7 +60,7 @@ dependencies {
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    // implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit2_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
@@ -70,6 +70,7 @@ dependencies {
     // Annotation processor
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     // replaced with implementation androidx.lifecycle:lifecycle-common-java8
     // https://stackoverflow.com/questions/49602410/when-should-we-use-android-arch-lifecyclecompiler-or-android-arch-lifecycleco
