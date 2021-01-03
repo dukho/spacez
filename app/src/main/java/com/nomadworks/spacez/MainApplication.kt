@@ -24,7 +24,13 @@ class MainApplication : Application(), BaseApplication {
     private fun initDI() {
         baseAppComponent = DaggerBaseAppComponent.builder()
             .baseAppModule(BaseAppModule(applicationContext))
-            .baseAppConfigModule(BaseAppConfigModule(createAppConfig()))
+            .baseAppConfigModule(
+                BaseAppConfigModule(
+                    createAppConfig(),
+                    BuildConfig.VERSION_NAME,
+                    BuildConfig.VERSION_CODE.toString()
+                )
+            )
             .build()
     }
 

@@ -59,14 +59,14 @@ class LaunchInfoViewModel(private val repository: SpacexRepository) : ViewModel(
             launchName = "${launch.name}",
             launchImageLink = launch.links?.let {
                 if (it.flickr?.original?.isNotEmpty() == true) {
-                    it.flickr.original[0]
+                    it.flickr?.original?.get(0)
                 } else {
                     null
                 }
             },
             patchImageLink = launch.links?.let {
                 if (it.patch?.small?.isNotBlank() == true) {
-                    it.patch.small
+                    it.patch?.small
                 } else {
                     null
                 }

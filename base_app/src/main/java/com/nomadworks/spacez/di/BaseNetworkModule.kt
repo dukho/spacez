@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -65,13 +66,12 @@ class BaseNetworkModule {
             Interceptor { chain: Interceptor.Chain ->
                 val builder =
                         chain.request().newBuilder().header(HEADER_DEVICE_ID, resourceQuery.getDeviceId())
-                builder.header(HEADER_USER_AGENT, getUserAgentValue())
+                builder.header(HEADER_USER_AGENT, getUserAgentValue(resourceQuery))
                 val request = builder.build()
                 request.run {
                     chain.proceed(request)
                 }
             }
 
-    private fun getUserAgentValue(): String =
-            "spacez-android/${BuildConfig.VERSION_NAME}-${BuildConfig.VERSION_CODE}"
+    private fun getUserAgentValue(resourceQuery: ResourceQuery): String = "spacez-android/${resourceQuery.getVersionName()}-${resourceQuery.getVersionCode()}"
 }

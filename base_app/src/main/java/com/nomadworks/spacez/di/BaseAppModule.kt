@@ -8,11 +8,12 @@ import com.nomadworks.spacez.resource.ResourceQuery
 import com.nomadworks.spacez.resource.ResourceQueryImpl
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 class BaseAppModule(
-        private val context: Context
+    private val context: Context
 ) {
     @Provides
     fun provideContext(): Context = context
@@ -25,7 +26,12 @@ class BaseAppModule(
 
     @Singleton
     @Provides
-    fun providesResourceQuery(context: Context): ResourceQuery {
-        return ResourceQueryImpl(context)
+    fun providesResourceQuery(
+        context: Context,
+        appConfig: AppConfig,
+        @Named("VERSION_NAME") versionName: String,
+        @Named("VERSION_CODE") versionCode: String
+    ): ResourceQuery {
+        return ResourceQueryImpl(context, appConfig, versionName, versionCode)
     }
 }
