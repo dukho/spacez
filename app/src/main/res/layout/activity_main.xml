@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="Hi SpaceX"
             android:id="@+id/txtLabel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +25,7 @@
             android:id="@+id/btnLaunch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="LAUNCH"
+            android:text="LATEST LAUNCH"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtLabel"
