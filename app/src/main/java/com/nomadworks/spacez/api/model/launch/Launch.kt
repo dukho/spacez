@@ -1,5 +1,6 @@
 package com.nomadworks.spacez.api.model.launch
 
+import com.nomadworks.spacez.api.model.launch.link.Links
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -18,5 +19,6 @@ data class Launch(
     @Json(name = "name") val name: String?,
     @Json(name = "date_utc") val dateUtc: String?,
     @Json(name = "date_unix") val dateUnix: Long?,
-    @Json(name = "cores") val cores: List<Core>?
+    @Json(name = "cores") val cores: List<Core>?,
+    @Json(name = "links") val links: Links?
 )
