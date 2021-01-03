@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "androidx.core:core-ktx:$ktx_version"
+    api "androidx.appcompat:appcompat:$androidx_version"
+    api 'com.google.android.material:material:1.2.1'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api "androidx.lifecycle:lifecycle-common-java8:$arch_lifecycle_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ktx_version"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx_version"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_ktx_version"
+
+    // DI
+    api "com.google.dagger:dagger:$dagger_version"
+
+    // RX
+    api "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    api "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    api "com.jakewharton.rxrelay2:rxrelay:$rxrelay_version"
+    api "com.tomasznajda.ktx:rxjava2:$rxjavaktx_version"
+
+    // Logging
+    api "com.jakewharton.timber:timber:$timber_version"
+
+    // image loader
+    api "io.coil-kt:coil:$coil_version"
+
+    // Coroutine
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutine_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutine_android_version"
+
+    // Network
+    api "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    // implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    api "com.squareup.retrofit2:converter-moshi:$retrofit2_version"
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
+    api "com.squareup.moshi:moshi:$moshi_version"
+
+    // Annotation processor
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+
+    // replaced with implementation androidx.lifecycle:lifecycle-common-java8
+    // https://stackoverflow.com/questions/49602410/when-should-we-use-android-arch-lifecyclecompiler-or-android-arch-lifecycleco
+    // kapt "androidx.lifecycle:lifecycle-compiler:$arch_lifecycle_version"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+    // kaptAndroidTest "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
