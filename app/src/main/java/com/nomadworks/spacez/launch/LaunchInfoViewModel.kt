@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nomadworks.spacez.api.model.launch.Launch
-import com.nomadworks.spacez.repository.SpacexRepository
+import com.nomadworks.spacez.common.api.model.launch.Launch
+import com.nomadworks.spacez.common.repository.SpacexRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

@@ -1,7 +1,7 @@
 package com.nomadworks.spacez.launch.di
 
 import com.nomadworks.spacez.launch.LaunchInfoViewModelProvider
-import com.nomadworks.spacez.repository.SpacexRepository
+import com.nomadworks.spacez.common.repository.SpacexRepository
 import dagger.Module
 import dagger.Provides
 

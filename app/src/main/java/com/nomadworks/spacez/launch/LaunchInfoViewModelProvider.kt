@@ -2,7 +2,7 @@ package com.nomadworks.spacez.launch
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.nomadworks.spacez.repository.SpacexRepository
+import com.nomadworks.spacez.common.repository.SpacexRepository
 
 @Suppress("UNCHECKED_CAST")
 class LaunchInfoViewModelProvider(private val repository: SpacexRepository) : ViewModelProvider.Factory {

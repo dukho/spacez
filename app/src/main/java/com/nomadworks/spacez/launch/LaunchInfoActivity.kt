@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.nomadworks.spacez.R
-import com.nomadworks.spacez.base.BaseActivity
+import com.nomadworks.spacez.common.base.BaseActivity
 import com.nomadworks.spacez.databinding.ActivityLaunchInfoBinding
 import com.nomadworks.spacez.launch.di.inject
 import timber.log.Timber
