@@ -39,6 +39,7 @@ android {
 
 dependencies {
     implementation project("::base_app")
+    implementation project("::feature_latestlaunch")
 
     // Annotation processor : annotation should be declared even if they were added in the base module because they were required for compilation
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
