@@ -1,4 +1,4 @@
-name spacez-production-build
+name: spacez-production-build
 
 on:
   push:
