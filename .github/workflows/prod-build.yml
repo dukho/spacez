@@ -18,7 +18,7 @@ jobs:
       - name: Make sure gradlew executable
         run: chmod +x ./gradlew
       - name: Run unit test
-        run: ./gradlew app:testUatDebug --stacktrace
+        run: ./gradlew app:testDebug --stacktrace
 
   buildartifact:
     runs-on: ubuntu-latest
