@@ -1,0 +1,51 @@
+name: spacez-production-build
+
+on:
+  push:
+    branches: [ build*, build/*, release*, release/* ]
+  pull_request:
+    branches: [ build*, build/*, release*, release/* ]
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Make sure gradlew executable
+        run: chmod +x ./gradlew
+      - name: Run unit test
+        run: ./gradlew app:testDebug --stacktrace
+
+  buildartifact:
+    runs-on: ubuntu-latest
+    needs:
+      - unittest
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Make sure gradlew executable
+        run: chmod +x ./gradlew
+      - name: Getting config for signings
+        env:
+          keyPass: ${{ secrets.KEY_PASS }}
+          keyAlias: ${{ secrets.KEY_ALIAS }}
+          encodedCert: ${{ secrets.CERT_GPG }}
+          decodePass: ${{ secrets.CERT_GPG_PASS }}
+        run: |
+          echo 'Starting fetch cert'
+          echo "${{ secrets.CERT_GPG }}" > spacex.release.keystore.asc
+          gpg -d --passphrase "${{ secrets.CERT_GPG_PASS }}" --batch spacex.release.keystore.asc > app/spacex.release.keystore
+          echo 'Fetching cert done'
+          ./gradlew app:assembleRelease
+          echo 'Build done'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: prod-built-artifact
+          path: app/build/outputs/apk/release
