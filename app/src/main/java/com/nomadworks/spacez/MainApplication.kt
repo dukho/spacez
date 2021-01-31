@@ -1,8 +1,8 @@
 package com.nomadworks.spacez
 
 import android.app.Application
-import com.nomadworks.spacez.config.AppConfig
-import com.nomadworks.spacez.di.*
+import com.nomadworks.spacez.common.config.AppConfig
+import com.nomadworks.spacez.common.di.*
 import timber.log.Timber
 
 class MainApplication : Application(), BaseApplication {

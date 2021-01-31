@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="launchViewModel"
+            type="com.nomadworks.spacez.launch.LaunchInfoViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".launch.LaunchInfoActivity"
+        android:padding="@dimen/spacing_normal"
+        >
+
+        <ProgressBar
+            android:id="@+id/waitSpinner"
+            android:layout_width="@dimen/wait_spinner_size"
+            android:layout_height="@dimen/wait_spinner_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:visibleOrInvisible="@{launchViewModel.viewState.showWait}"
+            />
+
+        <ImageView
+            android:id="@+id/ivPatch"
+            android:layout_width="@dimen/patch_image_size"
+            android:layout_height="@dimen/patch_image_size"
+            app:loadUrl="@{launchViewModel.viewState.patchImageLink}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{launchViewModel.viewState.launchName}"
+            app:layout_constraintTop_toBottomOf="@id/ivPatch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btnLaunchInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LATEST LAUNCH INFO"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/txtInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{launchViewModel.viewState.launchInfo}"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            app:layout_constraintBottom_toTopOf="@id/btnLaunchInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/ivLaunch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/spacing_small"
+            app:loadUrl="@{launchViewModel.viewState.launchImageLink}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            app:layout_constraintBottom_toTopOf="@id/txtInfo"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
