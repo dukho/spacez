@@ -41,11 +41,11 @@ jobs:
         run: |
           echo 'Starting fetch cert'
           echo "${{ secrets.CERT_GPG }}" > spacex.release.keystore.asc
-          gpg -d --passphrase "${{ secrets.CERT_GPG_PASS }}" --batch scanNGoKeyStore.asc > app/spacex.release.keystore
+          gpg -d --passphrase "${{ secrets.CERT_GPG_PASS }}" --batch spacex.release.keystore.asc > app/spacex.release.keystore
           echo 'Fetching cert done'\
-          ./gradlew app:assembleProdRelease
+          ./gradlew app:assembleRelease
           echo 'Build done'
       - uses: actions/upload-artifact@v2
         with:
           name: prod-built-artifact
-          path: app/build/outputs/apk/prod/
+          path: app/build/outputs/apk/
