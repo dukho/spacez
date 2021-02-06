@@ -49,3 +49,11 @@ jobs:
         with:
           name: prod-built-artifact
           path: app/build/outputs/apk/release
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          group: spacez_testers
+          file: app/build/outputs/apk/release/app-release.apk
+
