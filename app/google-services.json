@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1088781328505",
+    "project_id": "spacez-95b48",
+    "storage_bucket": "spacez-95b48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088781328505:android:f78a6f44e1890a664334a8",
+        "android_client_info": {
+          "package_name": "com.nomadworks.spacez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088781328505-17e2hiocrers5l108hpquhcrvero6l29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmRZekhKbYC-lJ-wJ_GlEkg4qh78wfsU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088781328505-17e2hiocrers5l108hpquhcrvero6l29.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
