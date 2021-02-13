@@ -32,8 +32,9 @@ jobs:
           java-version: 1.8
       - name: Make sure gradlew executable
         run: chmod +x ./gradlew
-      - name: Getting config for signings
+      - name: Getting config for signings and build
         env:
+          appVersionCode: ${{ github.run_number }}
           keyPass: ${{ secrets.KEY_PASS }}
           keyAlias: ${{ secrets.KEY_ALIAS }}
           encodedCert: ${{ secrets.CERT_GPG }}
@@ -54,6 +55,6 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
-          group: spacez_testers
+          groups: spacez_testers
           file: app/build/outputs/apk/release/app-release.apk
 
