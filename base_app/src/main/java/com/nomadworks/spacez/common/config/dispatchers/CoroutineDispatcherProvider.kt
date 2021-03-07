@@ -3,5 +3,7 @@ package com.nomadworks.spacez.common.config.dispatchers
 import kotlinx.coroutines.CoroutineDispatcher
 
 interface CoroutineDispatcherProvider {
-    val backgroundDispatcher: CoroutineDispatcher
+    val ioDispatcher: CoroutineDispatcher
+    val mainDispatcher: CoroutineDispatcher
+    val defaultDispatcher: CoroutineDispatcher
 }
