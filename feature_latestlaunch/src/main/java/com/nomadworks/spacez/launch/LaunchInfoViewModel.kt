@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nomadworks.spacez.common.api.model.launch.Launch
-import com.nomadworks.spacez.common.repository.SpacexRepository
+import com.nomadworks.spacez.launch.domain.GetLatestLaunchUseCase
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class LaunchInfoViewModel(private val repository: SpacexRepository) : ViewModel(),
+class LaunchInfoViewModel(private val getLatestLaunchUseCase: GetLatestLaunchUseCase) : ViewModel(),
     LaunchInfoContract.ViewModel {
     data class ViewState(
         val launchInfo: String,
@@ -47,30 +47,33 @@ class LaunchInfoViewModel(private val repository: SpacexRepository) : ViewModel(
                     showWait = true
                 )
             )
-            val launch = repository.fetchLatestLaunch()
+            val launch = getLatestLaunchUseCase.fetchLatestLaunch()
             Timber.d("[space] launch result from viewmodel: $launch")
             updateLaunchInfo(launch)
         }
     }
 
     private fun updateLaunchInfo(launch: Launch) {
-        updateViewState(viewStateSnapshot.copy(
-            launchInfo = "${launch.details}",
-            launchName = "${launch.name}",
-            launchImageLink = launch.links?.let {
-                if (it.flickr?.original?.isNotEmpty() == true) {
-                    it.flickr?.original?.get(0)
-                } else {
-                    null
-                }
-            },
-            patchImageLink = launch.links?.let {
-                if (it.patch?.small?.isNotBlank() == true) {
-                    it.patch?.small
-                } else {
-                    null
-                }
-            },
-            showWait = false))
+        updateViewState(
+            viewStateSnapshot.copy(
+                launchInfo = "${launch.details}",
+                launchName = "${launch.name}",
+                launchImageLink = launch.links?.let {
+                    if (it.flickr?.original?.isNotEmpty() == true) {
+                        it.flickr?.original?.get(0)
+                    } else {
+                        null
+                    }
+                },
+                patchImageLink = launch.links?.let {
+                    if (it.patch?.small?.isNotBlank() == true) {
+                        it.patch?.small
+                    } else {
+                        null
+                    }
+                },
+                showWait = false
+            )
+        )
     }
 }
