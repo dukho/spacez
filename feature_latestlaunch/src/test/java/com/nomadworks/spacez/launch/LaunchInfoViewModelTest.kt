@@ -24,7 +24,6 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import java.io.File
 
-
 class LaunchInfoViewModelTest {
     @Suppress("unused")
     @get:Rule
@@ -39,6 +38,7 @@ class LaunchInfoViewModelTest {
     lateinit var repository: SpacexRepository
 
     @Before
+    @ExperimentalCoroutinesApi
     fun setup() {
         MockitoAnnotations.openMocks(this)
 
@@ -48,6 +48,7 @@ class LaunchInfoViewModelTest {
     }
 
     @After
+    @ExperimentalCoroutinesApi
     fun tearDown() {
         Dispatchers.resetMain()
         coroutineDispatcher.cleanupTestCoroutines()

@@ -48,7 +48,7 @@ class LaunchInfoViewModel(private val getLatestLaunchUseCase: GetLatestLaunchUse
                 )
             )
             val launch = getLatestLaunchUseCase.fetchLatestLaunch()
-            Timber.d("[space] launch result from viewmodel: $launch")
+            Timber.d("[space] launch result from viewmodel: $launch ")
             updateLaunchInfo(launch)
         }
     }
